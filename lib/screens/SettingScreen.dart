@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_milk_subscription/services/UiProvider.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -13,6 +14,21 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+
+  String appVersion = "Loading...";
+
+  @override
+  void initState() {
+    super.initState();
+    _getAppVersion();
+  }
+
+  Future<void> _getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      appVersion = "Version ${packageInfo.version} (${packageInfo.buildNumber})";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +47,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   onChanged: (value) { notifier.changeTheme(); },
                   value: notifier.isDark,
                 ),
+              ),
+              ListTile(
+                title: Text(appVersion, style: TextStyle(fontSize: 18)),
               )
             ],
           );
