@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel_milk_subscription/screens/auth/LoginScreen.dart';
 import 'dart:async';
 
 import 'HomeScreen.dart';
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen(title: 'Home')),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       ); // Navigate to HomeScreen
     });
   }
