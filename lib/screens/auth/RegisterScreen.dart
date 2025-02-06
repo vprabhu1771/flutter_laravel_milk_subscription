@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_milk_subscription/screens/auth/OtpVerificationScreen.dart';
 
+import '../HomeScreen.dart';
+
 class RegisterScreen extends StatefulWidget {
+
+  final String title;
+
+  const RegisterScreen({super.key, required this.title});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -34,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: Text(widget.title),
         backgroundColor: Color(0xFF0067A1), // Blue app bar
       ),
       body: PageView(
@@ -208,6 +215,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       // Proceed with registration (send data to backend or Firebase)
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Registration successful')),
+      );
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen(title: 'Home',))
       );
       // Clear fields after submission (optional)
       _mobileController.clear();
