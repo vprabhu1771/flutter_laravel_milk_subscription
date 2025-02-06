@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_milk_subscription/screens/SplashScreen.dart';
+import 'package:flutter_laravel_milk_subscription/screens/auth/LoginScreen.dart';
+import 'package:flutter_laravel_milk_subscription/screens/auth/RegisterScreen.dart';
 import 'package:flutter_laravel_milk_subscription/services/UiProvider.dart';
 import 'package:flutter_laravel_milk_subscription/screens/SettingScreen.dart';
 import 'package:provider/provider.dart';
@@ -34,10 +36,9 @@ class MyApp extends StatelessWidget {
             //Our custom theme applied
             darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
 
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            theme: notifier.isDark
+                ? notifier.darkTheme // dark theme applied
+                : notifier.blueTheme, // pink theme applied when not dark
 
             home: SplashScreen(),
 
