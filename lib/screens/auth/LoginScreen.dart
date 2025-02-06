@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_milk_subscription/screens/HomeScreen.dart';
+import 'package:flutter_laravel_milk_subscription/screens/auth/RegisterScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -94,6 +95,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     print("Password: ${_passwordController.text}");
                     print("Role: $_selectedRole");
 
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen(title: 'Home',))
+                    );
+
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
@@ -103,6 +109,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Text(
                     "Login",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                // Register Button
+                ElevatedButton(
+                  onPressed: () {
+                    print("Email: ${_emailController.text}");
+                    print("Password: ${_passwordController.text}");
+                    print("Role: $_selectedRole");
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterScreen(title: 'Home',))
+                    );
+
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    "Register",
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
