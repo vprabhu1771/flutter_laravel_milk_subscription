@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // For keyboard type
 
 class OtpVerificationScreen extends StatefulWidget {
+
+  final PageController pageController;
+
+  OtpVerificationScreen({required this.pageController});
+
   @override
   _OtpVerificationScreenState createState() => _OtpVerificationScreenState();
 }
@@ -13,10 +18,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('OTP Verification'),
-        backgroundColor: Color(0xFF0067A1),
-      ),
+      // appBar: AppBar(
+      //   title: Text('OTP Verification'),
+      //   backgroundColor: Color(0xFF0067A1),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -95,7 +100,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       // Simulating OTP verification, replace with actual verification logic (API call, etc.)
       if (otp == "1234") {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('OTP Verified Successfully')));
+
         // Proceed to next screen or perform other actions
+        // Move to Step 3 (Password Screen)
+        widget.pageController.nextPage(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid OTP')));
       }
