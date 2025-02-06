@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel_milk_subscription/screens/HomeScreen.dart';
+import 'package:flutter_laravel_milk_subscription/screens/SettingScreen.dart';
 
 class CustomDrawer extends StatelessWidget {
 
@@ -18,7 +20,12 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text("Home"),
             onTap: () {
-              
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen(title: 'Home',))
+              );
+
             },
           ),
           ListTile(
@@ -32,6 +39,11 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: Text("Settings"),
             onTap: () {
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingScreen(title: 'Settings',))
+              );
 
             },
           ),
