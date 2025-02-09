@@ -58,10 +58,10 @@ class UiProvider extends ChangeNotifier{
 
     // Bottom Navigation Bar Theme
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.pink, // Background color
+      backgroundColor: Color(0xFF0067A1), // Background color
       selectedItemColor: Colors.white, // Selected icon & text color
       unselectedItemColor: Colors.white70, // Unselected icon & text color
-      selectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, backgroundColor: Colors.pink), // Selected text style
+      selectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, backgroundColor: Color(0xFF0067A1)), // Selected text style
       unselectedLabelStyle: TextStyle(fontSize: 12), // Unselected text style
     ),
 
