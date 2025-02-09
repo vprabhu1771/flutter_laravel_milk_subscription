@@ -8,11 +8,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String _selectedRole = 'Customer';
 
   final List<String> _roles = ['Customer', 'Delivery', 'Admin'];
+
+  String? _mobileNo;
+  String? _password;
+
+  bool _obscurePassword = true; // Variable to toggle visibility of the password
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +43,63 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 20),
 
-                // Email Field
-                TextField(
-                  controller: _emailController,
+                // Mobile Number Field
+                TextFormField(
+                  controller: _mobileController,
                   decoration: InputDecoration(
-                    labelText: "Email",
-                    prefixIcon: Icon(Icons.email),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                    labelText: 'Mobile Number',
+                    hintText: 'Enter your mobile number',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.phone),
                   ),
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your mobile number';
+                    }
+                    if (value.length != 10) {
+                      return 'Mobile number must be 10 digits';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _mobileNo = value;
+                  },
                 ),
                 SizedBox(height: 15),
 
                 // Password Field
-                TextField(
+                TextFormField(
                   controller: _passwordController,
-                  obscureText: true,
                   decoration: InputDecoration(
-                    labelText: "Password",
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.lock),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
                     ),
                   ),
+                  obscureText: _obscurePassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _password = value;
+                  },
                 ),
                 SizedBox(height: 15),
 
@@ -91,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Login Button
                 ElevatedButton(
                   onPressed: () {
-                    print("Email: ${_emailController.text}");
+                    print("Email: ${_mobileController.text}");
                     print("Password: ${_passwordController.text}");
                     print("Role: $_selectedRole");
 
@@ -118,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Register Button
                 ElevatedButton(
                   onPressed: () {
-                    print("Email: ${_emailController.text}");
+                    print("Email: ${_mobileController.text}");
                     print("Password: ${_passwordController.text}");
                     print("Role: $_selectedRole");
 
