@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel_milk_subscription/screens/HomePage.dart';
 import 'package:flutter_laravel_milk_subscription/screens/HomeScreen.dart';
 import 'package:flutter_laravel_milk_subscription/screens/auth/RegisterScreen.dart';
 
@@ -135,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeScreen(title: 'Home',))
+                        MaterialPageRoute(builder: (context) => HomePage())
                     );
 
                   },
