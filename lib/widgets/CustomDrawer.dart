@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_milk_subscription/screens/HomeScreen.dart';
 import 'package:flutter_laravel_milk_subscription/screens/SettingScreen.dart';
+import 'package:flutter_laravel_milk_subscription/screens/auth/LoginScreen.dart';
 
 class CustomDrawer extends StatelessWidget {
 
@@ -53,6 +54,10 @@ class CustomDrawer extends StatelessWidget {
             title: Text("Logout"),
             onTap: () {
               // Handle logout
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen())
+              );
             },
           ),
         ],
